@@ -2,6 +2,6 @@
 
 = Table of Content =
 
-  * History
-  * License
-  * Installation
+  * [History]
+  * [License]
+  * [Installation]
