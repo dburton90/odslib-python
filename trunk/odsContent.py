@@ -11,6 +11,7 @@ class sheetCell:
         self.styleFontSize = ""
         self.styleAlignVertical = ""
         self.styleAlignHorizontal = ""
+        self.styleRotation = 0
 
     # Cell Styles
     def setStyle(self, style):
@@ -61,7 +62,7 @@ class sheetCell:
     def getFontSize(self):
         return self.styleFontSize
 
-    # Cell Alignment
+    # Cell Alignment and Orientation
     def setAlignVertical(self, align):
         if (align == "center"): align = "middle"
         # Make sure we have a valid alignment
@@ -82,6 +83,13 @@ class sheetCell:
 
     def getAlignHorizontal(self):
         return self.styleAlignHorizontal
+
+    def setRotation(self, value):
+        self.styleRotation = value
+        return self
+
+    def getRotation(self):
+        return self.styleRotation
 
     # Cell Values
     def floatValue(self, value):
@@ -374,7 +382,8 @@ class odsContentStyles:
                     fontSize = cell.getFontSize()
                     VAlign = cell.getAlignVertical()
                     HAlign = cell.getAlignHorizontal()
-                    attribTuple = (bold, italic, underline, fontColor, cellColor, fontSize, VAlign, HAlign)
+                    rotation = cell.getRotation()
+                    attribTuple = (bold, italic, underline, fontColor, cellColor, fontSize, VAlign, HAlign, rotation)
                     # Insert tuple into list
                     if not attribTuple in cellAttributes:
                         cellAttributes[attribTuple] = []
@@ -390,6 +399,7 @@ class odsContentStyles:
             fontSize = attribTuple[5]
             VAlign = attribTuple[6]
             HAlign = attribTuple[7]
+            rotation = attribTuple[8]
             # Create the style
             styleID = "ce%d" % self.cellIndex
             self.cellIndex += 1
@@ -406,6 +416,8 @@ class odsContentStyles:
                 styleCellProp.setAttribute("style:vertical-align", VAlign)
                 styleCellProp.setAttribute("style:repeat-content", "false")
                 styleCellProp.setAttribute("style:text-align-source", "fix")
+            if rotation:
+                styleCellProp.setAttribute("style:rotation-angle", rotation)
             # Cell Paragraph Properties
             styleParaProp = style.addChild(Element("style:paragraph-properties"))
             if HAlign:
