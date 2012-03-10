@@ -20,6 +20,7 @@ This is a list of features that I would like to see in the odslib-python project
   * Ability to change the background and foreground colors in a cell
   * Ability to adjust border colors and visibility
   * Ability to insert formulas into cells for external calculation
+  * Ability to set meta data name, subject, description, and author
 
 = Not Features =
 
