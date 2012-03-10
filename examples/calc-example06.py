@@ -9,7 +9,7 @@ doc = odslib.ODS()
 
 # Example Title
 titleCell = doc.content.getCell(0, 0)
-titleCell.stringValue('Alignment')
+titleCell.stringValue('Alignment & Rotation')
 titleCell.setFontSize("14pt")
 titleCell.setBold(True)
 titleCell.setAlignVertical('center')
@@ -17,20 +17,22 @@ titleCell.setAlignHorizontal('center')
 doc.content.mergeCells(0, 0, 5, 2)
 
 # Set the row height
+doc.content.getRow(2).setHeight('0.5in')
 doc.content.getRow(3).setHeight('0.5in')
 doc.content.getRow(4).setHeight('0.5in')
 doc.content.getRow(5).setHeight('0.5in')
 
-# valign Labels
+# Vertical Alignment Labels
 doc.content.getCell(0, 3).stringValue('top').setBold(True)
 doc.content.getCell(0, 4).stringValue('middle').setBold(True)
 doc.content.getCell(0, 5).stringValue('bottom').setBold(True)
 
-# halign Labels
-doc.content.getCell(1, 2).stringValue('left').setBold(True)
-doc.content.getCell(2, 2).stringValue('center').setBold(True)
-doc.content.getCell(3, 2).stringValue('right').setBold(True)
-doc.content.getCell(4, 2).stringValue('justify').setBold(True)
+# Horizontal Alignment Labels
+# Rotation is calculated in degrees (0-359) rotating counter clockwise.
+doc.content.getCell(1, 2).stringValue('left').setBold(True).setRotation(0)
+doc.content.getCell(2, 2).stringValue('center').setBold(True).setRotation(90)
+doc.content.getCell(3, 2).stringValue('right').setBold(True).setRotation(180)
+doc.content.getCell(4, 2).stringValue('justify').setBold(True).setRotation(270)
 
 # Fill in aligned properties
 # Vertical Align top
