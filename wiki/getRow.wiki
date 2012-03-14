@@ -4,7 +4,7 @@
 
 == Description ==
 
-This method gets the row object for the row at a given index from the default sheet.  To get the row from a different sheet, consider using [getSheet].
+This method gets the row object for the row at a given index from the default sheet.  To get the row from a different sheet, consider using [getSheet].  The most common reason to get the row is to then set the width of the row using [setWidth].
 
 == Arguments ==
 
