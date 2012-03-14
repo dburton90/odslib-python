@@ -21,7 +21,7 @@ for row in range(1, 9):
         # Because the getCell(col, row) method returns an object, we
         # can immediately tack the floatValue() method on the end with
         # the value we want put into the cell.
-        doc.content.getCell(col, row).floatValue(col * row)
+        doc.content.getCell(col, row).floatValue(col * row).setBorder()
         # The floatValue() method also returns a copy of the cell object
         # so we could comtinue to tack cell modifiers on the end.  Some
         # of the later examples will do this, so be prepared.

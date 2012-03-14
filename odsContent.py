@@ -12,6 +12,11 @@ class sheetCell:
         self.styleAlignVertical = ""
         self.styleAlignHorizontal = ""
         self.styleRotation = 0
+        # Cell Borders
+        self.styleBorder = ""
+        self.styleBorderWidth = "0.0008in"
+        self.styleBorderStyle = "solid"
+        self.styleBorderColor = "#000000"
 
     # Cell Styles
     def setStyle(self, style):
@@ -90,6 +95,32 @@ class sheetCell:
 
     def getRotation(self):
         return self.styleRotation
+
+    # Cell Borders
+    def setBorderWidth(self, value):
+        self.styleBorderWidth = value
+        self.styleBorder = "%s %s %s" % (self.styleBorderWidth, self.styleBorderStyle, self.styleBorderColor)
+        return self
+
+    def setBorderStyle(self, value):
+        self.styleBorderStyle = value
+        self.styleBorder = "%s %s %s" % (self.styleBorderWidth, self.styleBorderStyle, self.styleBorderColor)
+        return self
+
+    def setBorderColor(self, value):
+        self.styleBorderColor = value
+        self.styleBorder = "%s %s %s" % (self.styleBorderWidth, self.styleBorderStyle, self.styleBorderColor)
+        return self
+
+    def setBorder(self, value=True):
+        if value:
+            self.styleBorder = "%s %s %s" % (self.styleBorderWidth, self.styleBorderStyle, self.styleBorderColor)
+        else:
+            self.styleBorder = ""
+        return self
+    
+    def getBorder(self):
+        return self.styleBorder
 
     # Cell Values
     def floatValue(self, value):
@@ -383,7 +414,9 @@ class odsContentStyles:
                     VAlign = cell.getAlignVertical()
                     HAlign = cell.getAlignHorizontal()
                     rotation = cell.getRotation()
-                    attribTuple = (bold, italic, underline, fontColor, cellColor, fontSize, VAlign, HAlign, rotation)
+                    border = cell.getBorder()
+                    attribTuple = (bold, italic, underline, fontColor, cellColor, fontSize,
+                                   VAlign, HAlign, rotation, border)
                     # Insert tuple into list
                     if not attribTuple in cellAttributes:
                         cellAttributes[attribTuple] = []
@@ -400,6 +433,7 @@ class odsContentStyles:
             VAlign = attribTuple[6]
             HAlign = attribTuple[7]
             rotation = attribTuple[8]
+            border = attribTuple[9]
             # Create the style
             styleID = "ce%d" % self.cellIndex
             self.cellIndex += 1
@@ -418,6 +452,8 @@ class odsContentStyles:
                 styleCellProp.setAttribute("style:text-align-source", "fix")
             if rotation:
                 styleCellProp.setAttribute("style:rotation-angle", rotation)
+            if border:
+                styleCellProp.setAttribute("fo:border", border)
             # Cell Paragraph Properties
             styleParaProp = style.addChild(Element("style:paragraph-properties"))
             if HAlign:
