@@ -4,7 +4,7 @@
 
 == Description ==
 
-This method gets the column object for the column at a given index from the default sheet.  To get the column from a different sheet, consider using [getSheet].
+This method gets the column object for the column at a given index from the default sheet.  To get the column from a different sheet, consider using [getSheet].  The most common reason to get the column is to then set the width using the [setWidth] method.
 
 == Arguments ==
 
