@@ -12,6 +12,7 @@
    * [getColumn]
    * [getRow]
    * [getSheet]
+   * [getSheetIndex]
    * [makeSheet]
    * [mergeCells]
    * [setAlignHorizontal]
