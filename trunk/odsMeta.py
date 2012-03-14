@@ -41,18 +41,23 @@ class odsMeta:
 
     def setTitle(self, title):
         self.title.setData(title)
+        return self
 
     def setDescription(self, description):
         self.description.setData(description)
+        return self
 
     def setSubject(self, subject):
         self.subject.setData(subject)
+        return self
 
     def setCreator(self, name):
         self.initCreator.setData(name)
+        return self
 
     def setModifier(self, name):
         self.creator.setData(name)
+        return self
 
     def getISO8601(self):
         "Calculate and return localtime in ISO 8601 format"
