@@ -169,6 +169,7 @@ class sheetColumn:
 
     def setWidth(self, width):
         self.width = width
+        return self
 
     def getWidth(self):
         return self.width
@@ -178,6 +179,7 @@ class sheetColumn:
             self.column.setAttribute("table:visibility", "collapse")
         else:
             self.column.removeAttribute("table:visibility")
+        return self
 
     def toString(self):
         return self.column.toString()	
@@ -194,6 +196,7 @@ class sheetRow:
 
     def setHeight(self, height):
         self.height = height
+        return self
 
     def getHeight(self):
         return self.height
@@ -209,6 +212,7 @@ class sheetRow:
             self.row.setAttribute("table:visibility", "collapse")
         else:
             self.row.removeAttribute("table:visibility")
+        return self
 
     def toString(self):
         return self.row.toString()	
@@ -558,6 +562,7 @@ class odsContent:
                     self.getCell(c, r).setCover(False)
                 else:
                     self.getCell(c, r).setCover(True)
+        return cell
 
     def initialize(self):
         # Create document
