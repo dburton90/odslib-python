@@ -9,6 +9,8 @@ If you were trying to address cell B4, you would need to know which letter place
 
 Once you have this cell object, you can set values and cell properties.  Each of the methods in this Table Cells section return the cell object, so you can daisy chain them together for convenience.
 
+To start setting values, take a look at [stringValue] and [floatValue].
+
 == Arguments ==
 
 Two integer values are passed to getCell.  The first is the column index and the second is the row index.
