@@ -1,0 +1,1 @@
+This is a Python module that is used to create, customize, and export ODS documents.  This is a complete rewrite of the ooolib-python project that I originally created back in 2006 that was based on the original ooolib Perl project I started in 2003.
